@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./djangoproject2:/djangoproject2
+    command: >
+      sh -c "python3 manage.py migrate &&
+             python3 manage.py runserver 0.0.0.0:8000"
+    env_file:
+      - ./.env.dev
+#volumes:
+#  pgdata:
